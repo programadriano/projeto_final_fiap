@@ -1,12 +1,15 @@
-﻿namespace API.Entities
+﻿using API.Entities.Emuns;
+
+namespace API.Entities
 {
     public class News : BaseEntity
     {
 
-        public News(string title, string hat, string description, string createdBy, string tags)
+        public News(string title, string hat, string description, string createdBy, string tags,Status status)
         {
             Id = Guid.NewGuid().ToString();
             PublishDate = DateTime.Now;
+            Status = status;
 
             Title = title;
             Hat = hat;
