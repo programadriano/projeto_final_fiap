@@ -28,5 +28,12 @@ namespace API.Entities
         public void Delete() => Deleted = 1;
         #endregion
 
+        #region [Validate]
+        public void ValidateEntity()
+        {
+            AssertionConcern.AssertArgumentNotEmpty(Title, "O título não pode estar vazio!");
+            AssertionConcern.AssertArgumentLength(Title, 90, "O título deve ter até 90 caracteres!");
+        }
+        #endregion
     }
 }

@@ -1,4 +1,6 @@
+using API.Infra;
 using API.Infra.Data;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,10 @@ builder.Services.AddTransient<DataContext>();
 
 #endregion
 
+#region [DI]
+builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddTransient<NewsService>();
+#endregion
 
 var app = builder.Build();
 

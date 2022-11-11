@@ -6,7 +6,7 @@ namespace API.Entities
     public abstract class BaseEntity
     {
         public string Id { get; set; }
-        public int Deleted { get; protected set; }
+        public int Deleted { get;  set; }
         public string CreatedBy { get; set; }
         public string Tags { get; set; }
         public DateTime PublishDate { get; set; }
