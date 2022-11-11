@@ -1,3 +1,6 @@
+using API.Infra.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#region [Database]
+//Desafio trocar a estrutura para um outro banco SQL Server ou Oracle
+builder.Services.AddDbContext<DataContext>(
+        options => options.UseNpgsql(builder.Configuration.GetSection("DatabaseSettings:ConnectionString").Value));
+
+builder.Services.AddTransient<DataContext>();
+
+#endregion
+
 
 var app = builder.Build();
 
